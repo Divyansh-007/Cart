@@ -1,22 +1,74 @@
 import React from 'react'
 
 class CartItem extends React.Component{
+    // state set up
+    constructor(){
+        super();
+        this.state = {
+            price: 999,
+            title: 'Phone',
+            qty: '1',
+            img: ''
+        }
+    }
+
+    increaseQuantity = () => {
+        console.log(this);
+    }
     render () {
+        const {title, price, qty} = this.state; //state variables calling
+        // using state
         return(
             <div className="cart-item">
                 <div className="left-block">
-                    <img style={styles.image}></img>
+                    <img style={styles.image} />
                 </div>
                 <div className="right-block">
-                    <div style={styles.item_name}>Phone</div>
-                    <div style={{color: '#777'}}>Rs. 999</div>
-                    <div style={{color: '#777'}}>Qty: 1</div>
+                    <div style={styles.item_name}>{title}</div>
+                    <div style={{color: '#777'}}>Rs. {price}</div>
+                    <div style={{color: '#777'}}>Qty: {qty}</div>
                     <div>
                         {/* Buttons */}
+                        <img 
+                            alt='increase' 
+                            className='action-icons' 
+                            src='https://www.flaticon.com/svg/vstatic/svg/992/992651.svg?token=exp=1620040392~hmac=6f5c9b52d3090718f27462872e4b3daf'
+                            onClick={this.increaseQuantity}
+                        />
+                        <img 
+                            alt='decrease' 
+                            className='action-icons' 
+                            src='https://www.flaticon.com/svg/vstatic/svg/992/992683.svg?token=exp=1620040218~hmac=358702c9c207bb54173d2da8e32fdd42'
+                        />
+                        <img 
+                            alt='delete' 
+                            className='action-icons' 
+                            src='https://www.flaticon.com/svg/vstatic/svg/3096/3096687.svg?token=exp=1620040423~hmac=9ec3e74ea832a573ef72fc71f07ad240'
+                        />
                     </div>
                 </div>
             </div>
         );
+        
+        // simple hardcoding
+        // return(
+        //     <div className="cart-item">
+        //         <div className="left-block">
+        //             <img style={styles.image} />
+        //         </div>
+        //         <div className="right-block">
+        //             <div style={styles.item_name}>Phone</div>
+        //             <div style={{color: '#777'}}>Rs. 999</div>
+        //             <div style={{color: '#777'}}>Qty: 1</div>
+        //             <div>
+        //                 {/* Buttons */}
+        //                 <img alt='increase' className='action-icons' src='https://www.flaticon.com/svg/vstatic/svg/992/992651.svg?token=exp=1620040392~hmac=6f5c9b52d3090718f27462872e4b3daf'/>
+        //                 <img alt='decrease' className='action-icons' src='https://www.flaticon.com/svg/vstatic/svg/992/992683.svg?token=exp=1620040218~hmac=358702c9c207bb54173d2da8e32fdd42'/>
+        //                 <img alt='delete' className='action-icons' src='https://www.flaticon.com/svg/vstatic/svg/3096/3096687.svg?token=exp=1620040423~hmac=9ec3e74ea832a573ef72fc71f07ad240'/>
+        //             </div>
+        //         </div>
+        //     </div>
+        // );
     }
 }
 
