@@ -1,43 +1,82 @@
 import React from 'react';
 
-class CartItem extends React.Component{
-    // dynamically using props from Cart
-    render () {
-        const {title, price, qty} = this.props.product; //state variables calling
-        return(
-            <div className="cart-item">
-                <div className="left-block">
-                    <img style={styles.image} />
-                </div>
-                <div className="right-block">
-                    <div style={styles.item_name}>{title}</div>
-                    <div style={{color: '#777'}}>Rs. {price}</div>
-                    <div style={{color: '#777'}}>Qty: {qty}</div>
-                    <div>
-                        {/* Buttons */}
-                        <img 
-                            alt='increase' 
-                            className='action-icons' 
-                            src='https://www.flaticon.com/svg/vstatic/svg/992/992651.svg?token=exp=1620040392~hmac=6f5c9b52d3090718f27462872e4b3daf'
-                            onClick={() => this.props.onIncreaseQuantity(this.props.product)}
-                        />
-                        <img 
-                            alt='decrease' 
-                            className='action-icons' 
-                            src='https://www.flaticon.com/svg/vstatic/svg/992/992683.svg?token=exp=1620040218~hmac=358702c9c207bb54173d2da8e32fdd42'
-                            onClick={() => this.props.onDecreaseQuantity(this.props.product)}
-                        />
-                        <img 
-                            alt='delete' 
-                            className='action-icons' 
-                            src='https://www.flaticon.com/svg/vstatic/svg/3096/3096687.svg?token=exp=1620040423~hmac=9ec3e74ea832a573ef72fc71f07ad240'
-                            onClick={() => this.props.onDelete(this.props.product.id)}
-                        />
-                    </div>
+// a function component
+const CartItem = (props) => {
+    const {title, price, qty} = props.product; //state variables calling
+    return(
+        <div className="cart-item">
+            <div className="left-block">
+                <img style={styles.image} />
+            </div>
+            <div className="right-block">
+                <div style={styles.item_name}>{title}</div>
+                <div style={{color: '#777'}}>Rs. {price}</div>
+                <div style={{color: '#777'}}>Qty: {qty}</div>
+                <div>
+                    {/* Buttons */}
+                    <img 
+                        alt='increase' 
+                        className='action-icons' 
+                        src='https://www.flaticon.com/svg/vstatic/svg/992/992651.svg?token=exp=1620040392~hmac=6f5c9b52d3090718f27462872e4b3daf'
+                        onClick={() => props.onIncreaseQuantity(props.product)}
+                    />
+                    <img 
+                        alt='decrease' 
+                        className='action-icons' 
+                        src='https://www.flaticon.com/svg/vstatic/svg/992/992683.svg?token=exp=1620040218~hmac=358702c9c207bb54173d2da8e32fdd42'
+                        onClick={() => props.onDecreaseQuantity(props.product)}
+                    />
+                    <img 
+                        alt='delete' 
+                        className='action-icons' 
+                        src='https://www.flaticon.com/svg/vstatic/svg/3096/3096687.svg?token=exp=1620040423~hmac=9ec3e74ea832a573ef72fc71f07ad240'
+                        onClick={() => props.onDelete(props.product.id)}
+                    />
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
+}
+
+
+// class CartItem extends React.Component{
+//     // dynamically using props from Cart
+//     render () {
+//         const {title, price, qty} = this.props.product; //state variables calling
+//         return(
+//             <div className="cart-item">
+//                 <div className="left-block">
+//                     <img style={styles.image} />
+//                 </div>
+//                 <div className="right-block">
+//                     <div style={styles.item_name}>{title}</div>
+//                     <div style={{color: '#777'}}>Rs. {price}</div>
+//                     <div style={{color: '#777'}}>Qty: {qty}</div>
+//                     <div>
+//                         {/* Buttons */}
+//                         <img 
+//                             alt='increase' 
+//                             className='action-icons' 
+//                             src='https://www.flaticon.com/svg/vstatic/svg/992/992651.svg?token=exp=1620040392~hmac=6f5c9b52d3090718f27462872e4b3daf'
+//                             onClick={() => this.props.onIncreaseQuantity(this.props.product)}
+//                         />
+//                         <img 
+//                             alt='decrease' 
+//                             className='action-icons' 
+//                             src='https://www.flaticon.com/svg/vstatic/svg/992/992683.svg?token=exp=1620040218~hmac=358702c9c207bb54173d2da8e32fdd42'
+//                             onClick={() => this.props.onDecreaseQuantity(this.props.product)}
+//                         />
+//                         <img 
+//                             alt='delete' 
+//                             className='action-icons' 
+//                             src='https://www.flaticon.com/svg/vstatic/svg/3096/3096687.svg?token=exp=1620040423~hmac=9ec3e74ea832a573ef72fc71f07ad240'
+//                             onClick={() => this.props.onDelete(this.props.product.id)}
+//                         />
+//                     </div>
+//                 </div>
+//             </div>
+//         );
+//     }
 
 
     // state set up
@@ -135,7 +174,7 @@ class CartItem extends React.Component{
         //     </div>
         // );
     
-}
+// }
 
 const styles = {
     image : { 
