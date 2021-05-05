@@ -98,7 +98,7 @@ const CartItem = (props) => {
     //     //     qty: this.state.qty + 1
     //     // });
 
-    //     // setState form 1
+    //     // setState form 2
     //     this.setState((prevState) => {
     //         return {
     //             qty: prevState.qty + 1
