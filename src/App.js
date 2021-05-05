@@ -70,11 +70,19 @@ class App extends React.Component {
       const { products } = this.state;
       const index = products.indexOf(product);
 
-      products[index].qty += 1;
+      const docRef = firebase.firestore().collection('products').doc(products[index].id);
 
-      this.setState({
-          products: products
-      });
+      docRef.update({
+        qty: products[index].qty + 1
+      })
+      .then(() => {console.log('Updated successfully');})
+      .catch((err) => {console.log('error',err);});
+
+      // products[index].qty += 1;
+
+      // this.setState({
+      //     products: products
+      // });
   }
 
   handleDecreaseQuantity = (product) =>{
@@ -86,21 +94,36 @@ class App extends React.Component {
           return;
       }
 
-      products[index].qty -= 1;
+      const docRef = firebase.firestore().collection('products').doc(products[index].id);
 
-      this.setState({
-          products: products
-      });
+      docRef.update({
+        qty: products[index].qty - 1
+      })
+      .then(() => {console.log('Updated successfully');})
+      .catch((err) => {console.log('error',err);});
+      
+
+      // products[index].qty -= 1;
+
+      // this.setState({
+      //     products: products
+      // });
   }
 
   handleDelete = (id) => {
       const { products } = this.state;
 
-      const items = products.filter((item) => item.id !== id);
+      const docRef = firebase.firestore().collection('products').doc(id);
 
-      this.setState({
-          products: items
-      });
+      docRef.delete()
+      .then(() => {console.log('Deleted successfully');})
+      .catch((err) => {console.log('error',err);});
+
+      // const items = products.filter((item) => item.id !== id);
+
+      // this.setState({
+      //     products: items
+      // });
   }
 
   getCartCount = () => {
@@ -146,7 +169,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar count={this.getCartCount()} />
-        <button onClick={this.addProduct} style={{padding: 10, fontSize: 20}}>Add a Product</button>
+        {/* <button onClick={this.addProduct} style={{padding: 10, fontSize: 20}}>Add a Product</button> */}
         <Cart 
           products = {products}
           onIncreaseQuantity = {this.handleIncreaseQuantity}
