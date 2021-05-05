@@ -17,6 +17,9 @@ class App extends React.Component {
     firebase
       .firestore()
       .collection('products')
+      // .where('price','>=',999)
+      // .where('title','==','Laptop')
+      .orderBy('price','asc')
       .onSnapshot((snapshot) => {
         console.log(snapshot);
 
@@ -155,9 +158,9 @@ class App extends React.Component {
       .firestore()
       .collection('products')
       .add({
-        title: 'Washing Machine',
-        price: 5999,
-        qty: 2,
+        title: 'Chair',
+        price: 800,
+        qty: 4,
         img: ''
       })
       .then((docRef) => {console.log('Product Added',docRef);})
